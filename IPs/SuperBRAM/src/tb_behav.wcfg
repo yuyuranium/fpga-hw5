@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1000001fs"></ZoomEndTime>
+      <Cursor1Time time="531250fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="186"></NameColumnWidth>
+      <ValueColumnWidth column_width="74"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="12" />
+   <wvobject fp_name="/tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ADDRA" type="array">
+      <obj_property name="ElementShortName">ADDRA[9:0]</obj_property>
+      <obj_property name="ObjectShortName">ADDRA[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/DINA" type="array">
+      <obj_property name="ElementShortName">DINA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">DINA[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ENA" type="logic">
+      <obj_property name="ElementShortName">ENA</obj_property>
+      <obj_property name="ObjectShortName">ENA</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/WEA" type="array">
+      <obj_property name="ElementShortName">WEA[3:0]</obj_property>
+      <obj_property name="ObjectShortName">WEA[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ADDRB" type="array">
+      <obj_property name="ElementShortName">ADDRB[9:0]</obj_property>
+      <obj_property name="ObjectShortName">ADDRB[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/DINB" type="array">
+      <obj_property name="ElementShortName">DINB[31:0]</obj_property>
+      <obj_property name="ObjectShortName">DINB[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ENB" type="logic">
+      <obj_property name="ElementShortName">ENB</obj_property>
+      <obj_property name="ObjectShortName">ENB</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/WEB" type="array">
+      <obj_property name="ElementShortName">WEB[3:0]</obj_property>
+      <obj_property name="ObjectShortName">WEB[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/DOA" type="array">
+      <obj_property name="ElementShortName">DOA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">DOA[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/DOB" type="array">
+      <obj_property name="ElementShortName">DOB[31:0]</obj_property>
+      <obj_property name="ObjectShortName">DOB[31:0]</obj_property>
+   </wvobject>
+</wave_config>
