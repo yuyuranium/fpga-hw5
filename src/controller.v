@@ -10,7 +10,7 @@
 `define DONE 3'h4
 
 `define BRAM_RDADDR       4:0
-`define SUPER_BRAM_READDR 9:5
+`define SUPER_BRAM_RDADDR 9:5
 `define SUPER_BRAM_WRADDR 14:10
 `define DSP_INMODE        19:15
 `define DSP_OPMODE        26:20
@@ -47,7 +47,7 @@ module controller #(
   assign busy_o  = state_q != `IDLE;
   assign valid_o = state_q == `DONE;
 
-  reg [31:0] ins_buf;
+  reg [30:0] ins_buf;
 
   reg [2:0] state_q, state_d;
   reg [1:0] proc_cnt_q, proc_cnt_d;
@@ -55,10 +55,10 @@ module controller #(
   /* Input buffer */
   always @(posedge clk_i) begin
     if (!rst_ni) begin
-      ins_buf <= 32'd0;
+      ins_buf <= 31'd0;
     end else begin
       if (state_q == `IDLE && en_i) begin
-        ins_buf <= ins_i;
+        ins_buf <= ins_i[30:0];
       end
     end
   end
@@ -75,7 +75,7 @@ module controller #(
   always @(*) begin
     case (state_q)
       `IDLE:
-        if (en_i && ins_i[`EXECUTE]) begin  
+        if (en_i) begin  
           if (ins_i[`EXECUTE]) begin
             state_d = `RD;
           end else begin
@@ -87,7 +87,7 @@ module controller #(
       `RD:
         state_d = `PROC;
       `PROC:
-        if (proc_cnt_q == DSPLatency) begin
+        if (proc_cnt_q == DSPLatency - 1) begin
           state_d = `WB;
         end else begin
           state_d = `PROC;
@@ -99,6 +99,27 @@ module controller #(
       default:
         state_d = `IDLE;
     endcase
+  end
+
+  /* Process counter */
+  always @(posedge clk_i) begin
+    if (!rst_ni) begin
+      proc_cnt_q <= 2'd0;
+    end else begin
+      proc_cnt_q <= proc_cnt_d;
+    end
+  end
+
+  always @(*) begin
+    if (state_q == `PROC) begin
+      if (proc_cnt_q == DSPLatency - 1) begin
+        proc_cnt_d = 2'd0;
+      end else begin
+        proc_cnt_d = proc_cnt_q + 2'd1;
+      end
+    end else begin
+      proc_cnt_d = 2'd0;
+    end
   end
 
   /* BRAM control signals */
@@ -113,6 +134,48 @@ module controller #(
       end else begin
         bram_addrb <= 10'd0;
         bram_enb   <= 1'b0;
+      end
+    end
+  end
+
+  /* DSP control signals */
+  always @(posedge clk_i) begin
+    if (!rst_ni) begin
+      dsp_inmode_o  <= 5'd0;
+      dsp_opmode_o  <= 7'd0;
+      dsp_alumode_o <= 4'd0;
+    end else begin
+      if (state_q == `PROC) begin
+        dsp_inmode_o  <= ins_buf[`DSP_INMODE];
+        dsp_opmode_o  <= ins_buf[`DSP_OPMODE];
+        dsp_alumode_o <= ins_buf[`DSP_ALUMODE];
+      end else begin
+        dsp_inmode_o  <= 5'd0;
+        dsp_opmode_o  <= 7'd0;
+        dsp_alumode_o <= 4'd0;
+      end
+    end
+  end
+
+  /* SuperBRAM control signals */
+  always @(posedge clk_i) begin
+    if (!rst_ni) begin
+      super_bram_addrb <= 10'd0;
+      super_bram_web   <= 4'h0;
+      super_bram_enb   <= 1'b0;
+    end else begin
+      if (state_q == `RD) begin
+        super_bram_addrb <= {5'd0, ins_buf[`SUPER_BRAM_RDADDR]};
+        super_bram_web   <= 4'h0;
+        super_bram_enb   <= 1'b1;
+      end else if (state_q == `WB) begin
+        super_bram_addrb <= {5'd0, ins_buf[`SUPER_BRAM_WRADDR]};
+        super_bram_web   <= 4'hf;
+        super_bram_enb   <= 1'b0;
+      end else begin
+        super_bram_addrb <= 10'd0;
+        super_bram_web   <= 4'h0;
+        super_bram_enb   <= 1'b0;
       end
     end
   end
