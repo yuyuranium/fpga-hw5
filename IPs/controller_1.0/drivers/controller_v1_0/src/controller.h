@@ -76,4 +76,8 @@
  */
 XStatus CONTROLLER_Reg_SelfTest(void * baseaddr_p);
 
+void exec(UINTPTR baseAddr, u32 ins);
+u32 codegen(unsigned alumode, unsigned opmode, unsigned inmode,
+            unsigned bram1waddr, unsigned bram1raddr, unsigned bram0raddr);
+
 #endif // CONTROLLER_H
