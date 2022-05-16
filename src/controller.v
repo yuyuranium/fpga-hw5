@@ -30,13 +30,13 @@ module controller #(
   input [31:0] ins_i,
 
   // BRAM control interface
-  output reg [9:0] bram_addrb,
-  output reg       bram_enb,
+  output reg [9:0] bram_addrb_o,
+  output reg       bram_enb_o,
 
   // SuperBRAM control interface
-  output reg [9:0] super_bram_addrb,
-  output reg [3:0] super_bram_web,
-  output reg       super_bram_enb,
+  output reg [9:0] super_bram_addrb_o,
+  output reg [3:0] super_bram_web_o,
+  output reg       super_bram_enb_o,
 
   // DSP control interface
   output reg [3:0] dsp_alumode_o,
@@ -123,60 +123,43 @@ module controller #(
   end
 
   /* BRAM control signals */
-  always @(posedge clk_i) begin
-    if (!rst_ni) begin
-      bram_addrb <= 10'd0;
-      bram_enb   <= 1'b0;
+  always @(*) begin
+    if (state_q == `RD) begin
+      bram_addrb_o = {5'd0, ins_buf[`BRAM_RDADDR]};
+      bram_enb_o   = 1'b1;
     end else begin
-      if (state_q == `RD) begin
-        bram_addrb <= {5'd0, ins_buf[`BRAM_RDADDR]};
-        bram_enb   <= 1'b1;
-      end else begin
-        bram_addrb <= 10'd0;
-        bram_enb   <= 1'b0;
-      end
+      bram_addrb_o = 10'd0;
+      bram_enb_o   = 1'b0;
     end
   end
 
   /* DSP control signals */
-  always @(posedge clk_i) begin
-    if (!rst_ni) begin
-      dsp_inmode_o  <= 5'd0;
-      dsp_opmode_o  <= 7'd0;
-      dsp_alumode_o <= 4'd0;
+  always @(*) begin
+    if (state_q == `PROC) begin
+      dsp_inmode_o  = ins_buf[`DSP_INMODE];
+      dsp_opmode_o  = ins_buf[`DSP_OPMODE];
+      dsp_alumode_o = ins_buf[`DSP_ALUMODE];
     end else begin
-      if (state_q == `PROC) begin
-        dsp_inmode_o  <= ins_buf[`DSP_INMODE];
-        dsp_opmode_o  <= ins_buf[`DSP_OPMODE];
-        dsp_alumode_o <= ins_buf[`DSP_ALUMODE];
-      end else begin
-        dsp_inmode_o  <= 5'd0;
-        dsp_opmode_o  <= 7'd0;
-        dsp_alumode_o <= 4'd0;
-      end
+      dsp_inmode_o  = 5'd0;
+      dsp_opmode_o  = 7'd0;
+      dsp_alumode_o = 4'd0;
     end
   end
 
   /* SuperBRAM control signals */
-  always @(posedge clk_i) begin
-    if (!rst_ni) begin
-      super_bram_addrb <= 10'd0;
-      super_bram_web   <= 4'h0;
-      super_bram_enb   <= 1'b0;
+  always @(*) begin
+    if (state_q == `RD) begin
+      super_bram_addrb_o = {5'd0, ins_buf[`SUPER_BRAM_RDADDR]};
+      super_bram_web_o   = 4'h0;
+      super_bram_enb_o   = 1'b1;
+    end else if (state_q == `WB) begin
+      super_bram_addrb_o = {5'd0, ins_buf[`SUPER_BRAM_WRADDR]};
+      super_bram_web_o   = 4'hf;
+      super_bram_enb_o   = 1'b0;
     end else begin
-      if (state_q == `RD) begin
-        super_bram_addrb <= {5'd0, ins_buf[`SUPER_BRAM_RDADDR]};
-        super_bram_web   <= 4'h0;
-        super_bram_enb   <= 1'b1;
-      end else if (state_q == `WB) begin
-        super_bram_addrb <= {5'd0, ins_buf[`SUPER_BRAM_WRADDR]};
-        super_bram_web   <= 4'hf;
-        super_bram_enb   <= 1'b0;
-      end else begin
-        super_bram_addrb <= 10'd0;
-        super_bram_web   <= 4'h0;
-        super_bram_enb   <= 1'b0;
-      end
+      super_bram_addrb_o = 10'd0;
+      super_bram_web_o   = 4'h0;
+      super_bram_enb_o   = 1'b0;
     end
   end
 
