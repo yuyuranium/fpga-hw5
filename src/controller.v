@@ -44,13 +44,13 @@ module controller #(
   output reg [4:0] dsp_inmode_o
 );
 
-  assign busy_o  = state_q != `IDLE;
-  assign valid_o = state_q == `DONE;
-
   reg [30:0] ins_buf;
 
   reg [2:0] state_q, state_d;
   reg [1:0] proc_cnt_q, proc_cnt_d;
+
+  assign busy_o  = state_q != `IDLE;
+  assign valid_o = state_q == `DONE;
 
   /* Input buffer */
   always @(posedge clk_i) begin
