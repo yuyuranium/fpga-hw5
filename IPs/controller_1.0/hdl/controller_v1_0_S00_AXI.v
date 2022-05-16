@@ -15,14 +15,14 @@
 	)
 	(
 		// Users to add ports here
-		output wire [31:0] BRAM_ADDRB,
-		output wire        BRAM_ENB,
-		output wire [31:0] SUPER_BRAM_ADDRB,
-		output wire        SUPER_BRAM_ENB,
-		output wire [3:0]  SUPER_BRAM_WEB,
-		output wire [3:0]  DSP_ALUMODE,
-		output wire [6:0]  DSP_OPMODE,
-		output wire [4:0]  DSP_INMODE,
+		output wire [9:0] BRAM_ADDRB,
+		output wire       BRAM_ENB,
+		output wire [9:0] SUPER_BRAM_ADDRB,
+		output wire       SUPER_BRAM_ENB,
+		output wire [3:0] SUPER_BRAM_WEB,
+		output wire [3:0] DSP_ALUMODE,
+		output wire [6:0] DSP_OPMODE,
+		output wire [4:0] DSP_INMODE,
 		
 
 		// User ports ends

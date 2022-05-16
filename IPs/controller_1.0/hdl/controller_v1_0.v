@@ -15,14 +15,14 @@
 	)
 	(
 		// Users to add ports here,
-		output wire [31:0] m_bram_addrb,
-		output             m_bram_enb,
-		output wire [31:0] m_super_bram_addrb,
-		output             m_super_bram_enb,
-		output wire [3:0]  m_super_bram_web,
-		output wire [3:0]  m_dsp_alumode,
-		output wire [6:0]  m_dsp_opmode,
-		output wire [4:0]  m_dsp_inmode,
+		output wire [9:0] m_bram_addrb,
+		output            m_bram_enb,
+		output wire [9:0] m_super_bram_addrb,
+		output            m_super_bram_enb,
+		output wire [3:0] m_super_bram_web,
+		output wire [3:0] m_dsp_alumode,
+		output wire [6:0] m_dsp_opmode,
+		output wire [4:0] m_dsp_inmode,
 
 		// User ports ends
 		// Do not modify the ports beyond this line
