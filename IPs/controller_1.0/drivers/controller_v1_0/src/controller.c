@@ -6,7 +6,7 @@
 void exec(UINTPTR baseAddr, u32 ins)
 {
     // Write instruction to control register 1
-    CONTROLLER_mWriteReg(baseAddr, 1, ins);    
+    CONTROLLER_mWriteReg(baseAddr, 4, ins);    
 
     // Write start signal to control register 0
     CONTROLLER_mWriteReg(baseAddr, 0, 1);
