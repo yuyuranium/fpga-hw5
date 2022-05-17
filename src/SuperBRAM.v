@@ -5,7 +5,7 @@
  */
 
 module SuperBRAM32x32(
-    input clk,
+    input clka, clkb,
 	input rst_a,
 	input [11:0] ADDRARDADDR,
 	input ENARDEN,
@@ -228,7 +228,7 @@ RAMB36E1 #(
 	// Port A Address/Control Signals: 16-bit (each) input: Port A address and control signals (read port
 	// when RAM_MODE="SDP")
 	.ADDRARDADDR({1'b1, ADDRARDADDR[11:2], 5'b11111}), // 16-bit input: A port address/Read address
-	.CLKARDCLK(clk), // 1-bit input: A port clock/Read clock
+	.CLKARDCLK(clka), // 1-bit input: A port clock/Read clock
 	.ENARDEN(ENARDEN), // 1-bit input: A port enable/Read enable
 	.REGCEAREGCE(1), // 1-bit input: A port register enable/Register enable
 	.RSTRAMARSTRAM(), // 1-bit input: A port set/reset
@@ -240,7 +240,7 @@ RAMB36E1 #(
 	// Port B Address/Control Signals: 16-bit (each) input: Port B address and control signals (write port
 	// when RAM_MODE="SDP")
 	.ADDRBWRADDR({1'b1, ADDRBWRADDR[9:0], 5'b11111}), // 16-bit input: B port address/Write address
-	.CLKBWRCLK(clk), // 1-bit input: B port clock/Write clock
+	.CLKBWRCLK(clkb), // 1-bit input: B port clock/Write clock
 	.ENBWREN(ENBWREN), // 1-bit input: B port enable/Write enable
 	.REGCEB(1), // 1-bit input: B port register enable
 	.RSTRAMB(), // 1-bit input: B port set/reset
