@@ -266,7 +266,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>ed51fee3</spirit:value>
+            <spirit:value>573546f9</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -282,7 +282,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>ed51fee3</spirit:value>
+            <spirit:value>573546f9</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -946,8 +946,8 @@
         <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>controller_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>4</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2022-05-16T15:42:21Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>5</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2022-05-18T11:09:47Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@4f0bac7f_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@238b2117_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
@@ -1052,13 +1052,26 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@4a3c0527_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@2d8a3e70_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@3990dd3_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@656b06c1_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@107622c8_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1564bda0_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7dd98ba4_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b9fca0a_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62b91c54_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c029b96_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30046278_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@647be560_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6016ffae_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48a8f960_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31d09d82_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ac8acc_ARCHIVE_LOCATION">c:/Users/u4m61/Desktop/FPGA/hw5/ip_repo/controller_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="7a63f3fc"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ed1368d5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="f3bd5054"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="6272d6aa"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="e21f084d"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="6992ea72"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="2ff93ee8"/>
