@@ -24,11 +24,11 @@ DSP48E1 #(
 	.SEL_PATTERN("PATTERN"), // Select pattern value ("PATTERN" or "C")
 	.USE_PATTERN_DETECT("NO_PATDET"), // Enable pattern detect ("PATDET" or "NO_PATDET")
 	// Register Control Attributes: Pipeline Register Configuration
-	.ACASCREG(0), // Number of pipeline stages between A/ACIN and ACOUT (0, 1 or 2)
+	.ACASCREG(1), // Number of pipeline stages between A/ACIN and ACOUT (0, 1 or 2)
 	.ADREG(0), // Number of pipeline stages for pre-adder (0 or 1)
 	.ALUMODEREG(1), // Number of pipeline stages for ALUMODE (0 or 1)
 	.AREG(1), // Number of pipeline stages for A (0, 1 or 2)
-	.BCASCREG(0), // Number of pipeline stages between B/BCIN and BCOUT (0, 1 or 2)
+	.BCASCREG(1), // Number of pipeline stages between B/BCIN and BCOUT (0, 1 or 2)
 	.BREG(1), // Number of pipeline stages for B (0, 1 or 2)
 	.CARRYINREG(0), // Number of pipeline stages for CARRYIN (0 or 1)
 	.CARRYINSELREG(0), // Number of pipeline stages for CARRYINSEL (0 or 1)
