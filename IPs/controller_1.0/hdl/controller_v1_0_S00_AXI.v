@@ -419,19 +419,20 @@
 
 	// Add user logic here
     controller u_controller (
-        .clk_i            (S_AXI_ACLK),
-        .rst_ni           (S_AXI_ARESETN),
-        .en_i             (slv_reg0[0] ^ busy),
-        .busy_o           (busy),
-        .ins_i            (slv_reg1),
-        .bram_addrb_o     (BRAM_ADDRB),
-		.bram_enb_o       (BRAM_ENB),
-		.super_bram_addr_o(SUPER_BRAM_ADDRB),
-		.super_bram_enb_o (SUPER_BRAM_ENB),
-		.super_bram_web_o (SUPER_BRAM_WEB),
-		.dsp_alumode_o(DSP_ALUMODE),
-		.dsp_opmode_o(DSP_OPMODE),
-		.dsp_inmode_o(DSP_INMODE)
+        .clk_i             (S_AXI_ACLK),
+        .rst_ni            (S_AXI_ARESETN),
+        .en_i              (slv_reg0[0] ^ busy),
+        .busy_o            (busy),
+        .valid_o           (valid),
+        .ins_i             (slv_reg1),
+        .bram_addrb_o      (BRAM_ADDRB),
+		.bram_enb_o        (BRAM_ENB),
+		.super_bram_addrb_o(SUPER_BRAM_ADDRB),
+		.super_bram_enb_o  (SUPER_BRAM_ENB),
+		.super_bram_web_o  (SUPER_BRAM_WEB),
+		.dsp_alumode_o     (DSP_ALUMODE),
+		.dsp_opmode_o      (DSP_OPMODE),
+		.dsp_inmode_o      (DSP_INMODE)
     );
 	// User logic ends
 
