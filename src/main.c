@@ -23,10 +23,8 @@ int main()
 
 	u32 data1, data2, result;
 
-	
-	// alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 4*3, bram1rAddr = 4*2, bram0rAddr = 4*0;
 	exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		 codegen(0, 0x0000101, 0x10001, 12, 8, 0)); 
+		 codegen(0, 0b0000101, 0b10001, 3, 2, 0)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 4*3, bram1rAddr = 4*2, bram0rAddr = 4*0;
 
 	data1 = Xil_In32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR);
 	data2 = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 8);
@@ -34,13 +32,9 @@ int main()
 	printf("data1 = %x, data2 = %x, result = %x\n",data1, data2, result);
 
 
-	// alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 4*7, bram1rAddr = 4*3, bram0rAddr = 4*11;
+
 	exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		 codegen(0, 0x0000101, 0x10001,
-				 XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 28,
-				 XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 12,
-				 XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR + 44)
-		); 
+		 codegen(0, 0b0000101, 0b10001, 7, 3, 11)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 4*7, bram1rAddr = 4*3, bram0rAddr = 4*11;
 
 	data1 = Xil_In32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR + 44);
 	data2 = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 12);
