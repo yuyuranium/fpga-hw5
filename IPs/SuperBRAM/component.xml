@@ -18,7 +18,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>bef5e70f</spirit:value>
+            <spirit:value>6c37d161</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -34,7 +34,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>e5246284</spirit:value>
+            <spirit:value>47585a28</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -284,7 +284,7 @@
       <spirit:file>
         <spirit:name>src/BRAM.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_e5246284</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_47585a28</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -356,18 +356,18 @@
       <xilinx:displayName>SuperBRAM32x32_v1_0</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:coreRevision>2</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2022-05-17T06:29:33Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2022-05-20T05:56:59Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@5fffbe43_ARCHIVE_LOCATION">d:/FPGA/IPs/SuperBRAM</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@271a02f8_ARCHIVE_LOCATION">d:/FPGA/IPs/SuperBRAM</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e3ab911_ARCHIVE_LOCATION">d:/FPGA/IPs/SuperBRAM</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b862cc2_ARCHIVE_LOCATION">d:/FPGA/IPs/SuperBRAM</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c9b5a3_ARCHIVE_LOCATION">d:/FPGA/IPs/SuperBRAM</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f702289_ARCHIVE_LOCATION">d:/FPGA/IPs/SuperBRAM</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@361d798_ARCHIVE_LOCATION">d:/FPGA/IPs/SuperBRAM</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bc758b0_ARCHIVE_LOCATION">d:/FPGA/IPs/SuperBRAM</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a38dd68_ARCHIVE_LOCATION">d:/FPGA/IPs/SuperBRAM</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@9e7478a_ARCHIVE_LOCATION">d:/FPGA/IPs/SuperBRAM</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.2</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="da94b76e"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="404f8371"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="ddc37720"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="3cb5b8ab"/>
     </xilinx:packagingInfo>
