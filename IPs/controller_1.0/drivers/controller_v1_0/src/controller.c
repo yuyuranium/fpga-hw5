@@ -3,10 +3,11 @@
 /***************************** Include Files *******************************/
 #include "controller.h"
 
+/************************** Function Definitions ***************************/
 void exec(UINTPTR baseAddr, u32 ins)
 {
     // Write instruction to control register 1
-    CONTROLLER_mWriteReg(baseAddr, 4, ins);    
+    CONTROLLER_mWriteReg(baseAddr, 4, ins);
 
     // Write start signal to control register 0
     CONTROLLER_mWriteReg(baseAddr, 0, 1);
@@ -30,5 +31,3 @@ u32 codegen(unsigned alumode, unsigned opmode, unsigned inmode,
     ins |= 0x80000000;  // set Execute
     return ins;
 }
-
-/************************** Function Definitions ***************************/
