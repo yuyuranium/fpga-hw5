@@ -10,9 +10,16 @@ void exec(UINTPTR baseAddr, u32 ins)
 
     // Write start signal to control register 0
     CONTROLLER_mWriteReg(baseAddr, 0, 1);
+#include "xparameters.h"
+    printf("Before: %lx\n", Xil_In32(XPAR_AXI_GPIO_0_BASEADDR));
 
     // Busy waiting for execution
     while (CONTROLLER_mReadReg(baseAddr, 0));
+    printf("After: %lx\n", Xil_In32(XPAR_AXI_GPIO_0_BASEADDR));
+    printf("After: %lx\n", Xil_In32(XPAR_AXI_GPIO_0_BASEADDR));
+    printf("After: %lx\n", Xil_In32(XPAR_AXI_GPIO_0_BASEADDR));
+    printf("After: %lx\n", Xil_In32(XPAR_AXI_GPIO_0_BASEADDR));
+    printf("After: %lx\n", Xil_In32(XPAR_AXI_GPIO_0_BASEADDR));
 
     return;
 }

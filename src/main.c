@@ -14,10 +14,8 @@ void dump_bram()
 {
 	for (int i = 0; i < 33; ++i) {
 		u32 a, b;
-		for (int j = 0; j < 10; ++j) {
-			a = Xil_In32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR + 4 * i);
-			b = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 4 * i);
-		}
+		a = Xil_In32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR + 4 * i);
+		b = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 4 * i);
 		printf("BRAM[%d] = %lx \t \t \t SuperBRAM[%d] = %lx\n", i, a, i, b);
 	}
 }
@@ -36,14 +34,9 @@ int main()
 	// u32 data1, data2, result;
 	printf("===== Initial BRAM values =====\n");
 	dump_bram();
-	//exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		// codegen(0, 0b0000101, 0b10001, 3 + 1, 2 + 1, 0 + 1)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 4*3, bram1rAddr = 4*2, bram0rAddr = 4*0;
-	Xil_Out32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR, 0x87);
-	Xil_Out32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 20, 0x87);
-	Xil_Out32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR, 0x87);
-	Xil_Out32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR + 20, 0x87);
-	Xil_Out32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 32, 0x87);
-	Xil_Out32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR + 32, 0x87);
+	exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
+		 codegen(0, 0b0000101, 0b10001, 3 + 1, 2 + 1, 0 + 1)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 4*3, bram1rAddr = 4*2, bram0rAddr = 4*0;
+
 	// data1 = Xil_In32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR);
 	// data2 = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 8);
 	// result = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 12);
