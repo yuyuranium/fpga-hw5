@@ -48,7 +48,7 @@ module controller #(
 
   reg [2:0] state_q, state_d;
   reg [1:0] proc_cnt_q, proc_cnt_d;
-  
+
   assign busy_o  = state_q != `IDLE;
   assign valid_o = state_q == `DONE;
 
@@ -155,7 +155,7 @@ module controller #(
     end else if (state_q == `WB) begin
       super_bram_addrb_o = {5'd0, ins_buf[`SUPER_BRAM_WRADDR]};
       super_bram_web_o   = 4'hf;
-      super_bram_enb_o   = 1'b0;
+      super_bram_enb_o   = 1'b1;
     end else begin
       super_bram_addrb_o = 10'd0;
       super_bram_web_o   = 4'h0;
