@@ -20,7 +20,7 @@ void exec(u32 ins)
     // Busy waiting for execution (while valid == 0)
     while (Xil_In32(XPAR_AXI_GPIO_1_BASEADDR) == 0);
 
-    // Write disable signal to GPIO 2
+    // Reset enable signal to GPIO 2
     Xil_Out32(XPAR_AXI_GPIO_2_BASEADDR, 0);
 
     return;
@@ -52,83 +52,43 @@ void dump_bram()
 
 int main()
 {
-	printf("Program Start.\n");
-	
-	// BRAM1[3] <= BRAM0[0] * BRAM1[2] ;
-	// BRAM1[7] <= BRAM0[11] * BRAM1[3] ;
-	// BRAM1[10] <= BRAM0[31] * BRAM1[7] + C ;
+	printf("Program Start.\n\n");
+	printf("Step1\n");
+	// BRAM1[3] <= BRAM0[0] * BRAM1[2];
+	exec(codegen(0b0000, 0b0000101, 0b10001, 3, 2, 0)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 3, bram1rAddr = 2, bram0rAddr = 0;
+	// BRAM1[7] <= BRAM0[11] * BRAM1[3];
+	exec(codegen(0b0000, 0b0000101, 0b10001, 7, 3, 11)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 7, bram1rAddr = 3, bram0rAddr = 11;
+	// BRAM1[10] <= BRAM0[31] * BRAM1[7] + C;
+	exec(codegen(0b0000, 0b0110101, 0b10001, 10, 7, 31)); // alumode = 0000, opmode = 0110101, inmode = 10001, bram1wAddr = 10, bram1rAddr = 7, bram0rAddr = 31;
 	// BRAM1[13] <= C - BRAM0[1] * BRAM1[6] ;
-	// BRAM1[15] <= BRAM0[0] * BRAM1[31] - C - 1 ;
-
-	// u32 data1, data2, result;
-	printf("===== Initial BRAM values =====\n");
-	dump_bram();
-	exec(codegen(0, 0b0000101, 0b10001, 3, 2, 0)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 4*3, bram1rAddr = 4*2, bram0rAddr = 4*0;
-
-	// data1 = Xil_In32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR);
-	// data2 = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 8);
-	// result = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 12);
-	// printf("data1 = %lx, data2 = %lx, result = %lx\n", data1, data2, result);
-    printf("\n===== After exec =====\n");
-	dump_bram();
-
-
-	/*exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		 codegen(0, 0b0000101, 0b10001, 7, 3, 11)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 4*7, bram1rAddr = 4*3, bram0rAddr = 4*11;
-
-	data1 = Xil_In32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR + 44);
-	data2 = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 12);
-	result = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 28);
-	printf("data1 = %lx, data2 = %lx, result = %lx\n",data1, data2, result);*/
-
-
-
-	/*exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		 codegen(0, 0x0110101, 0x10001, 40, 28, 124)); // alumode = 0000, opmode = 0110101, inmode = 10001, bram1wAddr = 4*10, bram1rAddr = 4*7, bram0rAddr = 4*31;
-	exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		 codegen(0x0011, 0x0110101, 0x10001, 52, 24, 4)); // alumode = 0011, opmode = 0110101, inmode = 10001, bram1wAddr = 4*13, bram1rAddr = 4*6, bram0rAddr = 4*1;
-	exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		 codegen(0x0001, 0x0110101, 0x10001, 60, 124, 0)); // alumode = 0001, opmode = 0110101, inmode = 10001, bram1wAddr = 4*15, bram1rAddr = 4*31, bram0rAddr = 4*0;
+	exec(codegen(0b0011, 0b0110101, 0b10001, 13, 6, 1)); // alumode = 0011, opmode = 0110101, inmode = 10001, bram1wAddr = 13, bram1rAddr = 6, bram0rAddr = 1;
+	// BRAM1[15] <= BRAM0[0] * BRAM1[31] - C - 1;
+	exec(codegen(0b0001, 0b0110101, 0b10001, 15, 31, 0)); // alumode = 0001, opmode = 0110101, inmode = 10001, bram1wAddr = 15, bram1rAddr = 31, bram0rAddr = 0;
 	
 	for(int i = 0; i < 32; i++)
-	{
-		u32 Offset = i*4;
-		u32 data = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + Offset);
-		printf("BRAM1[%d] = %x\n", i, data);
-	}*/
+		printf("BRAM1[%d] = 0x%lx\n", i, Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + i * 4));
 	
-	//printf("\n------------------------second times------------------------\n\n");
+	printf("\nStep2\n");
 
-	/* write data in BRAM1 by C code */
-	/*for(int i = 0; i < 32; i++)
-	{
-		u32 wdata = (i+1)^2;
-		u32 Offset = i*4;
-		Xil_Out32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + Offset, wdata);
-	}*/
+	/* write data in BRAM0 by C code */
+	for(int i = 0; i < 32; i++) {
+		u32 wdata = (i + 1) * (i + 1);
+		Xil_Out32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR + i * 4, wdata);
+	}
 	
-	// BRAM1[16] <= BRAM0[0] * BRAM1[2] ;
-	// BRAM1[17] <= BRAM0[11] * BRAM1[3] ;
-	// BRAM1[18] <= BRAM0[31] * BRAM1[7] + C ;
-	// BRAM1[19] <= C - BRAM0[1] * BRAM1[6] ;
-	// BRAM1[20] <= BRAM0[0] * BRAM1[31] - C - 1 ;
-	/*exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		 codegen(0, 0x0000101, 0x10001, 64, 8, 0)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 4*16, bram1rAddr = 4*2, bram0rAddr = 4*0;
-	exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		 codegen(0, 0x0000101, 0x10001, 68, 12, 44)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 4*17, bram1rAddr = 4*3, bram0rAddr = 4*11;
-	exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		 codegen(0, 0x0110101, 0x10001, 72, 28, 124)); // alumode = 0000, opmode = 0110101, inmode = 10001, bram1wAddr = 4*18, bram1rAddr = 4*7, bram0rAddr = 4*31;
-	exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		 codegen(0x0011, 0x0110101, 0x10001, 76, 24, 4)); // alumode = 0011, opmode = 0110101, inmode = 10001, bram1wAddr = 4*19, bram1rAddr = 4*6, bram0rAddr = 4*1;
-	exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		 codegen(0x0001, 0x0110101, 0x10001, 80, 124, 0)); // alumode = 0001, opmode = 0110101, inmode = 10001, bram1wAddr = 4*20, bram1rAddr = 4*31, bram0rAddr = 4*0;
+	// BRAM1[16] <= BRAM0[0] * BRAM1[2];
+	exec(codegen(0b0000, 0b0000101, 0b10001, 16, 2, 0)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 16, bram1rAddr = 2, bram0rAddr = 0;
+	// BRAM1[17] <= BRAM0[11] * BRAM1[3];
+	exec(codegen(0b0000, 0b0000101, 0b10001, 17, 3, 11)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 17, bram1rAddr = 3, bram0rAddr = 11;
+	// BRAM1[18] <= BRAM0[31] * BRAM1[7] + C;
+	exec(codegen(0b0000, 0b0110101, 0b10001, 18, 7, 31)); // alumode = 0000, opmode = 0110101, inmode = 10001, bram1wAddr = 18, bram1rAddr = 7, bram0rAddr = 31;
+	// BRAM1[19] <= C - BRAM0[1] * BRAM1[6];
+	exec(codegen(0b0011, 0b0110101, 0b10001, 19, 6, 1)); // alumode = 0011, opmode = 0110101, inmode = 10001, bram1wAddr = 19, bram1rAddr = 6, bram0rAddr = 1;
+	// BRAM1[20] <= BRAM0[0] * BRAM1[31] - C - 1;
+	exec(codegen(0b0001, 0b0110101, 0b10001, 20, 31, 0)); // alumode = 0001, opmode = 0110101, inmode = 10001, bram1wAddr = 20, bram1rAddr = 31, bram0rAddr = 0;
 	
 	for(int i = 0; i < 32; i++)
-	{
-		u32 Offset = i*4;
-		u32 data = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + Offset);
-		printf("BRAM1[%d] = %x\n\r", i, data);
-	}*/
+			printf("BRAM1[%d] = 0x%lx\n", i, Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + i * 4));
 	
 	printf("Program End.\n\r");
     return 0;
