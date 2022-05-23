@@ -13,9 +13,12 @@
 void dump_bram()
 {
 	for (int i = 0; i < 33; ++i) {
-		printf("BRAM[%d] = %lx \t \t \t SuperBRAM[%d] = %lx\n",
-				i, Xil_In32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR + 4 * i),
-				i, Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 4 * i));
+		u32 a, b;
+		for (int j = 0; j < 10; ++j) {
+			a = Xil_In32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR + 4 * i);
+			b = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 4 * i);
+		}
+		printf("BRAM[%d] = %lx \t \t \t SuperBRAM[%d] = %lx\n", i, a, i, b);
 	}
 }
 
