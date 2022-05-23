@@ -24,8 +24,8 @@ RAMB36E1 #(
 	// Collision check: Values ("ALL", "WARNING_ONLY", "GENERATE_X_ONLY" or "NONE")
 	.SIM_COLLISION_CHECK("ALL"),
 	// DOA_REG, DOB_REG: Optional output register (0 or 1)
-	.DOA_REG(1),
-	.DOB_REG(1),
+	.DOA_REG(0),
+	.DOB_REG(0),
 	.EN_ECC_READ("FALSE"), // Enable ECC decoder,
 	// FALSE, TRUE
 	.EN_ECC_WRITE("FALSE"), // Enable ECC encoder,
@@ -230,7 +230,7 @@ RAMB36E1 #(
 	.ADDRARDADDR({1'b0, ADDRARDADDR[11:0], 3'b000}), // 16-bit input: A port address/Read address
 	.CLKARDCLK(clka), // 1-bit input: A port clock/Read clock
 	.ENARDEN(ENARDEN), // 1-bit input: A port enable/Read enable
-	.REGCEAREGCE(1), // 1-bit input: A port register enable/Register enable
+	.REGCEAREGCE(), // 1-bit input: A port register enable/Register enable
 	.RSTRAMARSTRAM(), // 1-bit input: A port set/reset
 	.RSTREGARSTREG(), // 1-bit input: A port register set/reset
 	.WEA(WEA), // 4-bit input: A port write enable
@@ -242,7 +242,7 @@ RAMB36E1 #(
 	.ADDRBWRADDR({1'b0, ADDRBWRADDR[9:0], 5'b00000}), // 16-bit input: B port address/Write address
 	.CLKBWRCLK(clkb), // 1-bit input: B port clock/Write clock
 	.ENBWREN(ENBWREN), // 1-bit input: B port enable/Write enable
-	.REGCEB(1), // 1-bit input: B port register enable
+	.REGCEB(), // 1-bit input: B port register enable
 	.RSTRAMB(), // 1-bit input: B port set/reset
 	.RSTREGB(), // 1-bit input: B port register set/reset
 	.WEBWE({4'b0000,WEBWE}), // 8-bit input: B port write enable/Write enable
