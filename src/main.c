@@ -8,7 +8,37 @@
 #include "xil_printf.h"
 #include "xil_io.h"
 #include "xparameters.h"
-#include "controller.h"
+
+void exec(u32 ins)
+{
+    // Write instruction to GPIO 3
+    Xil_Out32(XPAR_AXI_GPIO_3_BASEADDR, ins);
+
+    // Write enable signal to GPIO 2
+    Xil_Out32(XPAR_AXI_GPIO_2_BASEADDR, 1);
+
+    // Busy waiting for execution (while valid == 0)
+    while (Xil_In32(XPAR_AXI_GPIO_1_BASEADDR) == 0);
+
+    // Write disable signal to GPIO 2
+    Xil_Out32(XPAR_AXI_GPIO_2_BASEADDR, 0);
+
+    return;
+}
+
+u32 codegen(unsigned alumode, unsigned opmode, unsigned inmode,
+            unsigned bram1waddr, unsigned bram1raddr, unsigned bram0raddr)
+{
+    u32 ins = 0;
+    ins |= (alumode & 0b1111) << 27;
+    ins |= (opmode & 0b1111111) << 20;
+    ins |= (inmode & 0b11111) << 15;
+    ins |= (bram1waddr & 0b11111) << 10;
+    ins |= (bram1raddr & 0b11111) << 5;
+    ins |= (bram0raddr & 0b11111) << 0;
+    ins |= 0x80000000;  // set Execute
+    return ins;
+}
 
 void dump_bram()
 {
@@ -19,7 +49,6 @@ void dump_bram()
 		printf("BRAM[%d] = %lx \t \t \t SuperBRAM[%d] = %lx\n", i, a, i, b);
 	}
 }
-
 
 int main()
 {
@@ -34,8 +63,7 @@ int main()
 	// u32 data1, data2, result;
 	printf("===== Initial BRAM values =====\n");
 	dump_bram();
-	exec(XPAR_CONTROLLER_0_S00_AXI_BASEADDR,
-		 codegen(0, 0b0000101, 0b10001, 3 + 1, 2 + 1, 0 + 1)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 4*3, bram1rAddr = 4*2, bram0rAddr = 4*0;
+	exec(codegen(0, 0b0000101, 0b10001, 3, 2, 0)); // alumode = 0000, opmode = 0000101, inmode = 10001, bram1wAddr = 4*3, bram1rAddr = 4*2, bram0rAddr = 4*0;
 
 	// data1 = Xil_In32(XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR);
 	// data2 = Xil_In32(XPAR_AXI_BRAM_CTRL_1_S_AXI_BASEADDR + 8);
