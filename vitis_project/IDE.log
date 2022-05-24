@@ -1,0 +1,385 @@
+01:40:27 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\u4m61\Desktop\FPGA\hw5\vitis\temp_xsdb_launch_script.tcl
+01:40:27 INFO  : Registering command handlers for Vitis TCF services
+01:40:32 INFO  : XSCT server has started successfully.
+01:40:32 INFO  : Platform repository initialization has completed.
+01:40:33 INFO  : Successfully done setting XSCT server connection channel  
+01:40:33 INFO  : plnx-install-location is set to ''
+01:40:33 INFO  : Successfully done query RDI_DATADIR 
+01:40:33 INFO  : Successfully done setting workspace for the tool. 
+01:41:46 INFO  : Result from executing command 'getProjects': test_design_1_wrapper
+01:41:46 INFO  : Result from executing command 'getPlatforms': 
+01:41:46 WARN  : An unexpected exception occurred in the module 'platform project logging'
+01:41:47 INFO  : Platform 'test_design_1_wrapper' is added to custom repositories.
+01:42:05 INFO  : Platform 'test_design_1_wrapper' is added to custom repositories.
+01:47:54 INFO  : Result from executing command 'getProjects': test_design_1_wrapper
+01:47:54 INFO  : Result from executing command 'getPlatforms': test_design_1_wrapper|C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/test_design_1_wrapper.xpfm
+01:47:55 INFO  : Checking for BSP changes to sync application flags for project 'hw5_testing_vitis'...
+01:48:30 INFO  : Checking for BSP changes to sync application flags for project 'hw5_testing_vitis'...
+01:49:13 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:49:13 INFO  : Jtag cable 'Xilinx TUL 1234-tulA' is selected.
+01:49:13 INFO  : 'jtag frequency' command is executed.
+01:49:13 INFO  : Context for 'APU' is selected.
+01:49:13 INFO  : System reset is completed.
+01:49:16 INFO  : 'after 3000' command is executed.
+01:49:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}' command is executed.
+01:49:19 INFO  : Device configured successfully with "C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit"
+01:49:19 INFO  : Context for 'APU' is selected.
+01:49:19 INFO  : Hardware design and registers information is loaded from 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa'.
+01:49:19 INFO  : 'configparams force-mem-access 1' command is executed.
+01:49:19 INFO  : Context for 'APU' is selected.
+01:49:19 INFO  : Sourcing of 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl' is done.
+01:49:20 INFO  : 'ps7_init' command is executed.
+01:49:20 INFO  : 'ps7_post_config' command is executed.
+01:49:20 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+01:49:20 INFO  : The application 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf' is downloaded to processor 'ps7_cortexa9_0'.
+01:49:20 INFO  : 'configparams force-mem-access 0' command is executed.
+01:49:20 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}
+fpga -file C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+01:49:20 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+01:49:20 INFO  : 'con' command is executed.
+01:49:20 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+01:49:20 INFO  : Disconnected from the channel tcfchan#2.
+01:50:00 INFO  : Checking for BSP changes to sync application flags for project 'hw5_testing_vitis'...
+01:50:08 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:50:08 INFO  : Jtag cable 'Xilinx TUL 1234-tulA' is selected.
+01:50:08 INFO  : 'jtag frequency' command is executed.
+01:50:08 INFO  : Context for 'APU' is selected.
+01:50:08 INFO  : System reset is completed.
+01:50:11 INFO  : 'after 3000' command is executed.
+01:50:11 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}' command is executed.
+01:50:14 INFO  : Device configured successfully with "C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit"
+01:50:14 INFO  : Context for 'APU' is selected.
+01:50:14 INFO  : Hardware design and registers information is loaded from 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa'.
+01:50:14 INFO  : 'configparams force-mem-access 1' command is executed.
+01:50:14 INFO  : Context for 'APU' is selected.
+01:50:14 INFO  : Sourcing of 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl' is done.
+01:50:14 INFO  : 'ps7_init' command is executed.
+01:50:14 INFO  : 'ps7_post_config' command is executed.
+01:50:14 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+01:50:15 INFO  : The application 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf' is downloaded to processor 'ps7_cortexa9_0'.
+01:50:15 INFO  : 'configparams force-mem-access 0' command is executed.
+01:50:15 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}
+fpga -file C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+01:50:15 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+01:50:15 INFO  : 'con' command is executed.
+01:50:15 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+01:50:15 INFO  : Disconnected from the channel tcfchan#3.
+01:51:49 INFO  : Checking for BSP changes to sync application flags for project 'hw5_testing_vitis'...
+01:51:56 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:51:56 INFO  : Jtag cable 'Xilinx TUL 1234-tulA' is selected.
+01:51:56 INFO  : 'jtag frequency' command is executed.
+01:51:56 INFO  : Context for 'APU' is selected.
+01:51:56 INFO  : System reset is completed.
+01:51:59 INFO  : 'after 3000' command is executed.
+01:51:59 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}' command is executed.
+01:52:02 INFO  : Device configured successfully with "C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit"
+01:52:02 INFO  : Context for 'APU' is selected.
+01:52:02 INFO  : Hardware design and registers information is loaded from 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa'.
+01:52:02 INFO  : 'configparams force-mem-access 1' command is executed.
+01:52:02 INFO  : Context for 'APU' is selected.
+01:52:02 INFO  : Sourcing of 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl' is done.
+01:52:02 INFO  : 'ps7_init' command is executed.
+01:52:02 INFO  : 'ps7_post_config' command is executed.
+01:52:02 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+01:52:03 INFO  : The application 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf' is downloaded to processor 'ps7_cortexa9_0'.
+01:52:03 INFO  : 'configparams force-mem-access 0' command is executed.
+01:52:03 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}
+fpga -file C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+01:52:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+01:52:03 INFO  : 'con' command is executed.
+01:52:03 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+01:52:03 INFO  : Disconnected from the channel tcfchan#4.
+02:17:04 INFO  : Checking for BSP changes to sync application flags for project 'hw5_testing_vitis'...
+02:17:14 INFO  : Checking for BSP changes to sync application flags for project 'hw5_testing_vitis'...
+02:17:25 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+02:17:25 INFO  : Jtag cable 'Xilinx TUL 1234-tulA' is selected.
+02:17:25 INFO  : 'jtag frequency' command is executed.
+02:17:25 INFO  : Context for 'APU' is selected.
+02:17:25 INFO  : System reset is completed.
+02:17:28 INFO  : 'after 3000' command is executed.
+02:17:29 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}' command is executed.
+02:17:31 INFO  : Device configured successfully with "C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit"
+02:17:31 INFO  : Context for 'APU' is selected.
+02:17:31 INFO  : Hardware design and registers information is loaded from 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa'.
+02:17:31 INFO  : 'configparams force-mem-access 1' command is executed.
+02:17:31 INFO  : Context for 'APU' is selected.
+02:17:31 INFO  : Sourcing of 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl' is done.
+02:17:32 INFO  : 'ps7_init' command is executed.
+02:17:32 INFO  : 'ps7_post_config' command is executed.
+02:17:32 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+02:17:32 INFO  : The application 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf' is downloaded to processor 'ps7_cortexa9_0'.
+02:17:32 INFO  : 'configparams force-mem-access 0' command is executed.
+02:17:32 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}
+fpga -file C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+02:17:32 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+02:17:32 INFO  : 'con' command is executed.
+02:17:32 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+02:17:32 INFO  : Disconnected from the channel tcfchan#5.
+02:19:13 INFO  : Checking for BSP changes to sync application flags for project 'hw5_testing_vitis'...
+02:19:19 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+02:19:19 INFO  : Jtag cable 'Xilinx TUL 1234-tulA' is selected.
+02:19:19 INFO  : 'jtag frequency' command is executed.
+02:19:19 INFO  : Context for 'APU' is selected.
+02:19:19 INFO  : System reset is completed.
+02:19:22 INFO  : 'after 3000' command is executed.
+02:19:22 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}' command is executed.
+02:19:25 INFO  : Device configured successfully with "C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit"
+02:19:25 INFO  : Context for 'APU' is selected.
+02:19:25 INFO  : Hardware design and registers information is loaded from 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa'.
+02:19:25 INFO  : 'configparams force-mem-access 1' command is executed.
+02:19:25 INFO  : Context for 'APU' is selected.
+02:19:25 INFO  : Sourcing of 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl' is done.
+02:19:25 INFO  : 'ps7_init' command is executed.
+02:19:25 INFO  : 'ps7_post_config' command is executed.
+02:19:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+02:19:26 INFO  : The application 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf' is downloaded to processor 'ps7_cortexa9_0'.
+02:19:26 INFO  : 'configparams force-mem-access 0' command is executed.
+02:19:26 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}
+fpga -file C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+02:19:26 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+02:19:26 INFO  : 'con' command is executed.
+02:19:26 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+02:19:26 INFO  : Disconnected from the channel tcfchan#6.
+02:26:24 INFO  : Checking for BSP changes to sync application flags for project 'hw5_testing_vitis'...
+02:26:34 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+02:26:34 INFO  : Jtag cable 'Xilinx TUL 1234-tulA' is selected.
+02:26:34 INFO  : 'jtag frequency' command is executed.
+02:26:34 INFO  : Context for 'APU' is selected.
+02:26:34 INFO  : System reset is completed.
+02:26:37 INFO  : 'after 3000' command is executed.
+02:26:37 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}' command is executed.
+02:26:39 INFO  : Device configured successfully with "C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit"
+02:26:40 INFO  : Context for 'APU' is selected.
+02:26:40 INFO  : Hardware design and registers information is loaded from 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa'.
+02:26:40 INFO  : 'configparams force-mem-access 1' command is executed.
+02:26:40 INFO  : Context for 'APU' is selected.
+02:26:40 INFO  : Sourcing of 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl' is done.
+02:26:40 INFO  : 'ps7_init' command is executed.
+02:26:40 INFO  : 'ps7_post_config' command is executed.
+02:26:40 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+02:26:40 INFO  : The application 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf' is downloaded to processor 'ps7_cortexa9_0'.
+02:26:41 INFO  : 'configparams force-mem-access 0' command is executed.
+02:26:41 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}
+fpga -file C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+02:26:41 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+02:26:41 INFO  : 'con' command is executed.
+02:26:41 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+02:26:41 INFO  : Disconnected from the channel tcfchan#7.
+02:27:28 INFO  : Checking for BSP changes to sync application flags for project 'hw5_testing_vitis'...
+02:27:35 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+02:27:36 INFO  : Jtag cable 'Xilinx TUL 1234-tulA' is selected.
+02:27:36 INFO  : 'jtag frequency' command is executed.
+02:27:36 INFO  : Context for 'APU' is selected.
+02:27:36 INFO  : System reset is completed.
+02:27:39 INFO  : 'after 3000' command is executed.
+02:27:39 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}' command is executed.
+02:27:41 INFO  : Device configured successfully with "C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit"
+02:27:41 INFO  : Context for 'APU' is selected.
+02:27:41 INFO  : Hardware design and registers information is loaded from 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa'.
+02:27:41 INFO  : 'configparams force-mem-access 1' command is executed.
+02:27:41 INFO  : Context for 'APU' is selected.
+02:27:41 INFO  : Sourcing of 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl' is done.
+02:27:42 INFO  : 'ps7_init' command is executed.
+02:27:42 INFO  : 'ps7_post_config' command is executed.
+02:27:42 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+02:27:42 INFO  : The application 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf' is downloaded to processor 'ps7_cortexa9_0'.
+02:27:42 INFO  : 'configparams force-mem-access 0' command is executed.
+02:27:42 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}
+fpga -file C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+02:27:42 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+02:27:42 INFO  : 'con' command is executed.
+02:27:42 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+02:27:42 INFO  : Disconnected from the channel tcfchan#8.
+02:44:39 INFO  : Checking for BSP changes to sync application flags for project 'hw5_testing_vitis'...
+02:45:45 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+02:45:45 INFO  : Jtag cable 'Xilinx TUL 1234-tulA' is selected.
+02:45:45 INFO  : 'jtag frequency' command is executed.
+02:45:45 INFO  : Context for 'APU' is selected.
+02:45:45 INFO  : System reset is completed.
+02:45:48 INFO  : 'after 3000' command is executed.
+02:45:48 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}' command is executed.
+02:45:51 INFO  : Device configured successfully with "C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit"
+02:45:51 INFO  : Context for 'APU' is selected.
+02:45:51 INFO  : Hardware design and registers information is loaded from 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa'.
+02:45:51 INFO  : 'configparams force-mem-access 1' command is executed.
+02:45:51 INFO  : Context for 'APU' is selected.
+02:45:51 INFO  : Sourcing of 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl' is done.
+02:45:51 INFO  : 'ps7_init' command is executed.
+02:45:51 INFO  : 'ps7_post_config' command is executed.
+02:45:51 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+02:45:52 INFO  : The application 'C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf' is downloaded to processor 'ps7_cortexa9_0'.
+02:45:52 INFO  : 'configparams force-mem-access 0' command is executed.
+02:45:52 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}
+fpga -file C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/bitstream/test_design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/u4m61/Desktop/FPGA/hw5/vitis/test_design_1_wrapper/export/test_design_1_wrapper/hw/test_design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/u4m61/Desktop/FPGA/hw5/vitis/hw5_testing_vitis/Debug/hw5_testing_vitis.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+02:45:52 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+02:45:52 INFO  : 'con' command is executed.
+02:45:52 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+02:45:52 INFO  : Disconnected from the channel tcfchan#9.

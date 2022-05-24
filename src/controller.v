@@ -17,13 +17,10 @@
 `define DSP_ALUMODE       30:27
 `define EXECUTE           31
 
-module controller #(
-  DSPLatency = 3  // may be 3 or 4, can tune later on by modifying this
-) (
+module controller (
   input  clk_i,
   input  rst_ni,
   input  en_i,
-  output busy_o,
   output valid_o,
 
   // Input instruction
@@ -49,7 +46,6 @@ module controller #(
   reg [2:0] state_q, state_d;
   reg [1:0] proc_cnt_q, proc_cnt_d;
 
-  assign busy_o  = state_q != `IDLE;
   assign valid_o = state_q == `DONE;
 
   /* Input buffer */
@@ -87,15 +83,19 @@ module controller #(
       `RD:
         state_d = `PROC;
       `PROC:
-        if (proc_cnt_q == DSPLatency - 1) begin
-          state_d = `WB;
-        end else begin
+        if (proc_cnt_q < 2'd3) begin
           state_d = `PROC;
+        end else begin
+          state_d = `WB;
         end
       `WB:
         state_d = `DONE;
       `DONE:
-        state_d = `IDLE;
+        if (!en_i) begin
+          state_d = `IDLE;
+        end else begin
+          state_d = `DONE;
+        end
       default:
         state_d = `IDLE;
     endcase
@@ -112,10 +112,10 @@ module controller #(
 
   always @(*) begin
     if (state_q == `PROC) begin
-      if (proc_cnt_q == DSPLatency - 1) begin
-        proc_cnt_d = 2'd0;
-      end else begin
+      if (proc_cnt_q < 2'd3) begin
         proc_cnt_d = proc_cnt_q + 2'd1;
+      end else begin
+        proc_cnt_d = 2'd0;
       end
     end else begin
       proc_cnt_d = 2'd0;
@@ -155,7 +155,7 @@ module controller #(
     end else if (state_q == `WB) begin
       super_bram_addrb_o = {5'd0, ins_buf[`SUPER_BRAM_WRADDR]};
       super_bram_web_o   = 4'hf;
-      super_bram_enb_o   = 1'b0;
+      super_bram_enb_o   = 1'b1;
     end else begin
       super_bram_addrb_o = 10'd0;
       super_bram_web_o   = 4'h0;
